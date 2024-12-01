@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bChat</title>
+</head>
+<body>
+    <h1>Chat Sayfası</h1>
+    <div id="chat-box">
+        <!-- Chat mesaları buraya gelecek -->
+        <div class="messages">
+            {% for msg in messages %}
+                <div class="message">
+                    <strong>{{ msg[1] }}</strong>: {{ msg[2] }} <br>
+                    <small>{{ msg[3] }}</small> <!-- Mesajın zaman damgası -->
+                </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+    <form id="chat-form" action="/chat" method="POST">
+        <input type="text" name="message" id="message" placeholder="Mesajınızı yazın..." required>
+        <button type="submit">Gönder</button>
+    </form>
+
+
+    <a href="{{ url_for('logout') }}">Çıkış Yap</a>
+</body>
+</html>
